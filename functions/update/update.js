@@ -45,7 +45,7 @@ const handler = async (event) => {
 </svg>
     `;
 
-    await fs.writeFile("badge.svg", svg);
+    await fs.writeFile("/tmp/badge.svg", svg);
 
     return {
       statusCode: 200,
