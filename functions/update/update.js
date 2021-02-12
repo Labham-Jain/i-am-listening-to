@@ -1,6 +1,15 @@
 const fs = require("fs").promises;
 
+const token = process.env.token;
+
 const handler = async (event) => {
+  if (event.headers.token !== token) {
+    return {
+      statusCode: 403,
+      body: "Unauthorized",
+    };
+  }
+
   try {
     let { song, state } = event.queryStringParameters;
     if (state !== "playing") {
