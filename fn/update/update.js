@@ -1,5 +1,5 @@
 const fs = require("fs").promises;
-
+const path = require("path");
 const token = process.env.token;
 
 const handler = async (event) => {
@@ -45,7 +45,7 @@ const handler = async (event) => {
 </svg>
     `;
 
-    await fs.writeFile("/tmp/badge.svg", svg);
+    await fs.writeFile(`${path.resolve()}/badge.svg`, svg);
 
     return {
       statusCode: 200,
