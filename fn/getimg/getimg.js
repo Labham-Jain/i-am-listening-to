@@ -1,8 +1,7 @@
 const fs = require("fs").promises;
-const path = require("path");
 
 const handler = async (event) => {
-  const svg = await fs.readFile(`${path.resolve()}/badge.svg`);
+  const svg = await fs.readFile(`/tmp/badge.svg`);
   try {
     return {
       statusCode: 200,
