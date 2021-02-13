@@ -45,10 +45,11 @@ const handler = async (event) => {
     `;
 
     await fs.writeFile(`/tmp/badge.svg`, svg);
+    const dirs = await fs.readdir("/tmp");
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `Updated ${song}` }),
+      body: JSON.stringify(dirs),
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
