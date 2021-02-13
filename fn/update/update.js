@@ -1,5 +1,11 @@
 const fs = require("fs").promises;
+const { Octokit } = require("@octokit/core");
+
 const token = process.env.token;
+const gtoken = process.env.G_TOKEN;
+// github personal access token - https://github.com/settings/tokens/new?scopes=repo
+
+const octokit = new Octokit({ auth: gtoken });
 
 const handler = async (event) => {
   if (event.headers.token !== token) {
@@ -44,12 +50,19 @@ const handler = async (event) => {
 </svg>
     `;
 
+    await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
+      owner: "shivamjoker",
+      repo: ".github",
+      path: "/music-badge.svg",
+      message: "message",
+      content: svg,
+    });
+
     await fs.writeFile(`/tmp/badge.svg`, svg);
-    const dirs = await fs.readdir("/tmp");
 
     return {
       statusCode: 200,
-      body: JSON.stringify(dirs),
+      body: JSON.stringify("Updated"),
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
