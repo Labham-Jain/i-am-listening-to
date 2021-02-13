@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "faunadb": "^4.0.3"
+    "@octokit/core": "^3.2.5"
   }
 }
