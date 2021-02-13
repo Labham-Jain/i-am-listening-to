@@ -50,12 +50,24 @@ const handler = async (event) => {
 </svg>
     `;
 
+    const buff = Buffer.from(svg, "utf-8");
+
+    const fileInfo = await octokit.request(
+      "GET /repos/{owner}/{repo}/contents/{path}",
+      {
+        owner: "shivamjoker",
+        repo: ".github",
+        path: "music-badge.svg",
+      }
+    );
+
     await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
       owner: "shivamjoker",
       repo: ".github",
-      path: "/music-badge.svg",
-      message: "message",
-      content: svg,
+      path: "music-badge.svg",
+      message: `Updated to ${song}`,
+      sha: fileInfo.data.sha,
+      content: buff.toString("base64"),
     });
 
     await fs.writeFile(`/tmp/badge.svg`, svg);
