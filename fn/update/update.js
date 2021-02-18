@@ -63,14 +63,12 @@ const handler = async (event) => {
 
     await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
       owner: "shivamjoker",
-      repo: ".github",
+      repo: "shivamjoker",
       path: "music-badge.svg",
       message: `Updated to ${song}`,
       sha: fileInfo.data.sha,
       content: buff.toString("base64"),
     });
-
-    await fs.writeFile(`/tmp/badge.svg`, svg);
 
     return {
       statusCode: 200,
