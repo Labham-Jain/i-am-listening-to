@@ -23,8 +23,6 @@ const handler = async (event) => {
 
     const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="547" height="59" viewBox="0 0 547 59" fill="none">
-  <rect width="547" height="59" fill="#E5E5E5" />
-  <rect width="547" height="59" fill="white" />
   <g filter="url(#filter0_i)">
     <rect width="547" height="59" rx="13" fill="#FF0000" />
   </g>
