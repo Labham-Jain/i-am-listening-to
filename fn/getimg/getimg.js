@@ -2,7 +2,6 @@ const { Octokit } = require("@octokit/core");
 
 const gtoken = process.env.G_TOKEN;
 // github personal access token - https://github.com/settings/tokens/new?scopes=repo
-console.log(gtoken);
 const octokit = new Octokit({ auth: gtoken });
 
 const handler = async (event) => {
@@ -24,8 +23,9 @@ const handler = async (event) => {
       isBase64Encoded: true,
     };
   } catch (error) {
+    console.log(error);
     return { statusCode: 500, body: error.toString() };
   }
 };
 
-module.exports = { handler };
+module.exports = handler;
