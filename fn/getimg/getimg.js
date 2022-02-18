@@ -2,7 +2,7 @@ const { Octokit } = require("@octokit/core");
 
 const gtoken = process.env.G_TOKEN;
 // github personal access token - https://github.com/settings/tokens/new?scopes=repo
-
+console.log(gtoken);
 const octokit = new Octokit({ auth: gtoken });
 
 const handler = async (event) => {
@@ -16,7 +16,7 @@ const handler = async (event) => {
         path: "music-badge.svg",
       }
     );
-
+    console.log(fileInfo);
     return {
       statusCode: 200,
       body: fileInfo.data.content,
