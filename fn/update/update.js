@@ -18,7 +18,7 @@ const handler = async (event) => {
   try {
     let { song, state } = event.queryStringParameters;
     if (state !== 'playing') {
-      song = 'Nothing ^_^';
+      song = 'Nothing.';
     }
 
     const svg = `
