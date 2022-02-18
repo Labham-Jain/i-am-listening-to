@@ -13,9 +13,9 @@ const handler = async (event) => {
         owner: "Labham-Jain",
         repo: "i-am-listening-to",
         path: "music-badge.svg",
+        ref: 'master'
       }
     );
-    console.log(fileInfo);
     return {
       statusCode: 200,
       body: fileInfo.data.content,
